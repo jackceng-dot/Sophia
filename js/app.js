@@ -874,9 +874,27 @@ const App = {
 
       document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
 
+      const meta = document.querySelector("meta[name='theme-color']");
+
+      if (meta) meta.content = dark ? "#1a1814" : "#ede5d0";
+
+      const appleMeta = document.querySelector("meta[name='apple-mobile-web-app-status-bar-style']");
+
+      if (appleMeta) appleMeta.content = dark ? "black-translucent" : "default";
+
     } else {
 
       document.documentElement.setAttribute("data-theme", t);
+
+      const isDark = t === "dark";
+
+      const meta = document.querySelector("meta[name='theme-color']");
+
+      if (meta) meta.content = isDark ? "#1a1814" : "#ede5d0";
+
+      const appleMeta = document.querySelector("meta[name='apple-mobile-web-app-status-bar-style']");
+
+      if (appleMeta) appleMeta.content = isDark ? "black-translucent" : "default";
 
     }
 
